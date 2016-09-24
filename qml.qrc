@@ -4,5 +4,7 @@
         <file>icon/takephoto.png</file>
         <file>MyMenu.qml</file>
         <file>MyCamera.qml</file>
+        <file>shader/grayscale.frag</file>
+        <file>shader/zshader.vsh</file>
     </qresource>
 </RCC>

@@ -6,6 +6,14 @@ import QtQuick.Dialogs 1.2
 import QtMultimedia 5.2
 
 Item {
+
+    function openFile(fileUrl) {
+        var request = new XMLHttpRequest();
+        request.open("GET", fileUrl, false);
+        request.send(null);
+        return request.responseText;
+    }
+
     Camera {
         id: camera
 
@@ -26,6 +34,7 @@ Item {
     }
 
     VideoOutput {
+        id: myVideo
         source: camera
         anchors.fill: parent
         focus : visible
@@ -57,5 +66,26 @@ Item {
                 }
             }
         }
+
+        ShaderEffect {
+            width: 100; height: 100
+            anchors.fill: parent
+            property variant src: ShaderEffectSource { sourceItem: myVideo; hideSource: false}
+
+            vertexShader: openFile("qrc:/shader/zshader.vsh")
+            fragmentShader: openFile("qrc:/shader/grayscale.frag")
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
