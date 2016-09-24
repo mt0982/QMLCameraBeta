@@ -12,10 +12,12 @@ ApplicationWindow {
     title: qsTr("Hello World")
 
     MyCamera {
+        id: myCamera
         anchors.fill: parent
     }
 
     MyMenu {
+        id: myMenu
         anchors.fill: parent
     }
 }

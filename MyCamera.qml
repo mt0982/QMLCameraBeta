@@ -6,6 +6,7 @@ import QtQuick.Dialogs 1.2
 import QtMultimedia 5.2
 
 Item {
+    property string fragmentShaderSource: " "
 
     function openFile(fileUrl) {
         var request = new XMLHttpRequest();
@@ -40,13 +41,15 @@ Item {
         focus : visible
         autoOrientation: true
         fillMode : VideoOutput.PreserveAspectCrop
+        z: 1
         //scale : height/width
 
         Rectangle {
             id: btnBackground
-            color: "#80ffffff"
+            color: "transparent" //"#80ffffff"
             x: 0
             y: parent.height - parent.height * 0.15
+            z: 2
             width: parent.width
             height: parent.height * 0.15
 
@@ -69,11 +72,14 @@ Item {
 
         ShaderEffect {
             width: 100; height: 100
-            anchors.fill: parent
+            anchors.fill: myVideo
             property variant src: ShaderEffectSource { sourceItem: myVideo; hideSource: false}
 
             vertexShader: openFile("qrc:/shader/zshader.vsh")
-            fragmentShader: openFile("qrc:/shader/grayscale.frag")
+            fragmentShader: fragmentShaderSource
+            onFragmentShaderChanged: {
+                console.log("Fragment Shader Was Changed")
+            }
         }
     }
 }
