@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>icon/takephoto.png</file>
+        <file>MyMenu.qml</file>
+        <file>MyCamera.qml</file>
     </qresource>
 </RCC>

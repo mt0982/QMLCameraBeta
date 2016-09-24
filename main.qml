@@ -11,28 +11,12 @@ ApplicationWindow {
     height: 640
     title: qsTr("Hello World")
 
-
-    Camera {
-        id: camera
-
-        imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
-
-        exposure {
-            exposureCompensation: -1.0
-            exposureMode: Camera.ExposurePortrait
-        }
-
-        //flash.mode: Camera.FlashRedEyeReduction
-        flash.mode: Camera.FlashAuto
+    MyCamera {
+        anchors.fill: parent
     }
 
-    VideoOutput {
-        source: camera
+    MyMenu {
         anchors.fill: parent
-        focus : visible
-        autoOrientation: true
-        fillMode : VideoOutput.PreserveAspectCrop
-        //scale : height/width
     }
 }
 
