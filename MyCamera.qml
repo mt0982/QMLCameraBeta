@@ -18,7 +18,7 @@ Item {
     Camera {
         id: camera
 
-        //imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
+        imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
         //imageProcessing {
         //    whiteBalanceMode: CameraImageProcessing.WhiteBalanceTungsten
         //    contrast: 0.66
@@ -30,8 +30,8 @@ Item {
             exposureMode: Camera.ExposurePortrait
         }
 
-        //flash.mode: Camera.FlashRedEyeReduction
-        flash.mode: Camera.FlashAuto
+        flash.mode: Camera.FlashRedEyeReduction
+        //flash.mode: Camera.FlashAuto
     }
 
     VideoOutput {
@@ -41,51 +41,26 @@ Item {
         focus : visible
         autoOrientation: true
         fillMode : VideoOutput.PreserveAspectCrop
-        z: 1
+        //z: 1
         //scale : height/width
+    }
 
-        Rectangle {
-            id: btnBackground
-            color: "transparent" //"#80ffffff"
-            x: 0
-            y: parent.height - parent.height * 0.15
-            z: 2
-            width: parent.width
-            height: parent.height * 0.15
-
-            Rectangle {
-                id: buttonFrame
-                color: "transparent" //"#ffffff"
-                anchors.centerIn: parent
-                width: parent.height * 0.9
-                height: parent.height * 0.9
-                radius: width * 0.5
-
-                Image {
-                    id: imageButton
-                    source: "qrc:/icon/takephoto.png"
-                    height: parent.height
-                    fillMode: Image.PreserveAspectFit
-                }
-            }
+    ShaderEffect {
+        anchors.fill: myVideo
+        property var src: ShaderEffectSource {
+            sourceItem: myVideo
+            hideSource: false
+            recursive: false
+            live: true
         }
 
-        ShaderEffect {
-            width: 100; height: 100
-            anchors.fill: myVideo
-            property variant src: ShaderEffectSource { sourceItem: myVideo; hideSource: false}
-
-            vertexShader: openFile("qrc:/shader/zshader.vsh")
-            fragmentShader: fragmentShaderSource
-            onFragmentShaderChanged: {
-                console.log("Fragment Shader Was Changed")
-            }
+        vertexShader: openFile("qrc:/shader/zshader.vsh")
+        fragmentShader: fragmentShaderSource
+        onFragmentShaderChanged: {
+            console.log("Fragment Shader Was Changed")
         }
     }
 }
-
-
-
 
 
 
