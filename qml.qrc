@@ -7,5 +7,9 @@
         <file>shader/grayscale.frag</file>
         <file>shader/zshader.vsh</file>
         <file>shader/normal.frag</file>
+        <file>icon/camera.png</file>
+        <file>shader/blue.frag</file>
+        <file>shader/red.frag</file>
+        <file>shader/green.frag</file>
     </qresource>
 </RCC>

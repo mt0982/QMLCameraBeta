@@ -15,23 +15,29 @@ Item {
         return request.responseText;
     }
 
+    Image {
+        id: photoPreview
+        anchors.fill: parent
+    }
+
     Camera {
         id: camera
 
-        imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
-        //imageProcessing {
-        //    whiteBalanceMode: CameraImageProcessing.WhiteBalanceTungsten
-        //    contrast: 0.66
-        //    saturation: -0.5
-        //}
+        //imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
 
         exposure {
             exposureCompensation: -1.0
             exposureMode: Camera.ExposurePortrait
         }
 
-        flash.mode: Camera.FlashRedEyeReduction
-        //flash.mode: Camera.FlashAuto
+        //flash.mode: Camera.FlashRedEyeReduction
+        flash.mode: Camera.FlashAuto
+
+        imageCapture {
+            onImageCaptured: {
+                photoPreview.source = preview
+            }
+        }
     }
 
     VideoOutput {
@@ -41,11 +47,41 @@ Item {
         focus : visible
         autoOrientation: true
         fillMode : VideoOutput.PreserveAspectCrop
-        //scale : height/width
+
+        Image {
+            id: photoIcon
+            source: "qrc:/icon/camera.png"
+            width: 48
+            height: 48
+            x: parent.width / 2 - 24
+            y: parent.height - 58
+
+            /* Take Photo */
+            MouseArea {
+                anchors.fill: parent
+
+                onPressed: {
+                    console.log(qsTr("Photo Button Pressed"))
+                    camera.searchAndLock();
+                }
+
+                onClicked: {
+                    console.log(qsTr("Photo Button Clicked"))
+                    camera.imageCapture.capture();
+                }
+
+                onReleased: {
+                    console.log(qsTr("Photo Button Released"))
+                    camera.unlock();
+                }
+            }
+        }
     }
 
     ShaderEffect {
-        anchors.fill: myVideo
+        id: myShaderEffect
+        anchors.fill: parent
+
         property var src: ShaderEffectSource {
             sourceItem: myVideo
             hideSource: false

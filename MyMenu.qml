@@ -40,6 +40,36 @@ Item {
                     myCamera.fragmentShaderSource = openFile("qrc:/shader/grayscale.frag")
                 }
             }
+
+            Button {
+                id: btnRedIsolation
+                width: parent.width
+                height: 48
+                text: qsTr("Red Isolation")
+                onClicked: {
+                    myCamera.fragmentShaderSource = openFile("qrc:/shader/red.frag")
+                }
+            }
+
+            Button {
+                id: btnGreenIsolation
+                width: parent.width
+                height: 48
+                text: qsTr("Green Isolation")
+                onClicked: {
+                    myCamera.fragmentShaderSource = openFile("qrc:/shader/green.frag")
+                }
+            }
+
+            Button {
+                id: btnBlueIsolation
+                width: parent.width
+                height: 48
+                text: qsTr("Blue Isolation")
+                onClicked: {
+                    myCamera.fragmentShaderSource = openFile("qrc:/shader/blue.frag")
+                }
+            }
         }
     }
 }
