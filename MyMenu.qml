@@ -22,15 +22,47 @@ Item {
             spacing: 1
 
             Button {
+                id: btnDisableShader
+                width: parent.width
+                height: 48
+                text: qsTr("Disable Shader Effects")
+                onClicked: {
+                    myCamera.fragmentShaderSource = openFile("qrc:/shader/normal.frag")
+                }
+            }
+
+            Button {
                 id: btnGrayScale
                 width: parent.width
                 height: 48
                 text: qsTr("Grayscale")
                 onClicked: {
-                    //MyCamera.fragmentShaderSource = openFile("qrc:/shader/grayscale.frag")
                     myCamera.fragmentShaderSource = openFile("qrc:/shader/grayscale.frag")
                 }
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

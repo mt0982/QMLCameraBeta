@@ -6,7 +6,7 @@ import QtQuick.Dialogs 1.2
 import QtMultimedia 5.2
 
 Item {
-    property string fragmentShaderSource: " "
+    property string fragmentShaderSource: openFile("qrc:/shader/normal.frag")
 
     function openFile(fileUrl) {
         var request = new XMLHttpRequest();
@@ -41,7 +41,6 @@ Item {
         focus : visible
         autoOrientation: true
         fillMode : VideoOutput.PreserveAspectCrop
-        //z: 1
         //scale : height/width
     }
 

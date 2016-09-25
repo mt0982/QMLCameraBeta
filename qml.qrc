@@ -6,5 +6,6 @@
         <file>MyCamera.qml</file>
         <file>shader/grayscale.frag</file>
         <file>shader/zshader.vsh</file>
+        <file>shader/normal.frag</file>
     </qresource>
 </RCC>
