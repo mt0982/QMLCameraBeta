@@ -7,6 +7,7 @@ import QtMultimedia 5.2
 
 Item {
     property string fragmentShaderSource: openFile("qrc:/shader/normal.frag")
+    property int flashMode: Camera.FlashOff
 
     function openFile(fileUrl) {
         var request = new XMLHttpRequest();
@@ -30,13 +31,17 @@ Item {
             exposureMode: Camera.ExposurePortrait
         }
 
-        //flash.mode: Camera.FlashRedEyeReduction
-        flash.mode: Camera.FlashAuto
+        flash.mode: flashMode
 
         imageCapture {
             onImageCaptured: {
                 photoPreview.source = preview
             }
+        }
+
+        focus {
+            focusMode: Camera.FocusMacro
+            focusPointMode: Camera.FocusPointAuto
         }
     }
 
