@@ -13,7 +13,7 @@ ApplicationWindow {
     title: qsTr("Hello World")
 
     //Material.theme: Material.Dark
-    //Material.accent: Material.color(Material.Green)
+    //Material.accent: Material.color(Material.Teal)
 
     MyCamera {
         id: myCamera
@@ -24,8 +24,6 @@ ApplicationWindow {
         id: myMenu
         anchors.fill: parent
     }
-
-
 }
 
 

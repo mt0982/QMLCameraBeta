@@ -61,61 +61,74 @@ Item {
         width: parent.width * 0.8
         height: parent.height
 
-        Column {
-            id: myColum
-            anchors.fill: parent
-            spacing: -7
-
-            Button {
-                id: btnDisableShader
-                width: parent.width
-                height: myDrawer.width * 0.2
-                text: qsTr("Disable Shader Effects")
-                onClicked: {
-                    myCamera.fragmentShaderSource = openFile("qrc:/shader/normal.frag")
-                }
+        background: Rectangle {
+            Rectangle {
+                x: parent.width - 3
+                width: 3
+                height: parent.height
+                color: "#607D8B"
             }
 
-            Button {
-                id: btnGrayScale
-                width: parent.width
-                height: myDrawer.width * 0.2
-                text: qsTr("Grayscale")
-                onClicked: {
-                    myCamera.fragmentShaderSource = openFile("qrc:/shader/grayscale.frag")
-                }
-            }
-
-            Button {
-                id: btnRedIsolation
-                width: parent.width
-                height: myDrawer.width * 0.2
-                text: qsTr("Red Isolation")
-                onClicked: {
-                    myCamera.fragmentShaderSource = openFile("qrc:/shader/red.frag")
-                }
-            }
-
-            Button {
-                id: btnGreenIsolation
-                width: parent.width
-                height: myDrawer.width * 0.2
-                text: qsTr("Green Isolation")
-                onClicked: {
-                    myCamera.fragmentShaderSource = openFile("qrc:/shader/green.frag")
-                }
-            }
-
-            Button {
-                id: btnBlueIsolation
-                width: parent.width
-                height: myDrawer.width * 0.2
-                text: qsTr("Blue Isolation")
-                onClicked: {
-                    myCamera.fragmentShaderSource = openFile("qrc:/shader/blue.frag")
-                }
+            MyComponent {
+                anchors.fill: parent
             }
         }
+
+//        Column {
+//            id: myColum
+//            anchors.fill: parent
+//            spacing: -7
+
+//            Button {
+//                id: btnDisableShader
+//                width: parent.width
+//                height: myDrawer.width * 0.2
+//                text: qsTr("Disable Shader Effects")
+//                onClicked: {
+//                    myCamera.fragmentShaderSource = openFile("qrc:/shader/normal.frag")
+//                }
+//            }
+
+//            Button {
+//                id: btnGrayScale
+//                width: parent.width
+//                height: myDrawer.width * 0.2
+//                text: qsTr("Grayscale")
+//                onClicked: {
+//                    myCamera.fragmentShaderSource = openFile("qrc:/shader/grayscale.frag")
+//                }
+//            }
+
+//            Button {
+//                id: btnRedIsolation
+//                width: parent.width
+//                height: myDrawer.width * 0.2
+//                text: qsTr("Red Isolation")
+//                onClicked: {
+//                    myCamera.fragmentShaderSource = openFile("qrc:/shader/red.frag")
+//                }
+//            }
+
+//            Button {
+//                id: btnGreenIsolation
+//                width: parent.width
+//                height: myDrawer.width * 0.2
+//                text: qsTr("Green Isolation")
+//                onClicked: {
+//                    myCamera.fragmentShaderSource = openFile("qrc:/shader/green.frag")
+//                }
+//            }
+
+//            Button {
+//                id: btnBlueIsolation
+//                width: parent.width
+//                height: myDrawer.width * 0.2
+//                text: qsTr("Blue Isolation")
+//                onClicked: {
+//                    myCamera.fragmentShaderSource = openFile("qrc:/shader/blue.frag")
+//                }
+//            }
+//        }
     }
 }
 

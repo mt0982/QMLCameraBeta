@@ -15,5 +15,6 @@
         <file>icon/buttonclicked.png</file>
         <file>icon/buttonreleased.png</file>
         <file>icon/buttonpressed.png</file>
+        <file>MyComponent.qml</file>
     </qresource>
 </RCC>
