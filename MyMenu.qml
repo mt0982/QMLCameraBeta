@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
+import QtMultimedia 5.2
 
 Item {
 
@@ -11,6 +12,50 @@ Item {
         return request.responseText;
     }
 
+    /* HEADER */
+    Switch {
+        id: mySwitch
+        x: parent.width * 0.75
+        y: 20
+
+        onCheckedChanged: {
+            if(mySwitch.checked) {
+                console.log("On")
+                myLabel.status = "On"
+                myCamera.flashMode = Camera.FlashOn
+            } else {
+                console.log("Off")
+                myLabel.status = "Off"
+                myCamera.flashMode = Camera.FlashOff
+            }
+        }
+    }
+
+    Label {
+        id: myLabel
+        property string status: "Off"
+        text: status
+        font.pixelSize: 18
+        color: "white"
+        anchors.left: mySwitch.right
+        anchors.verticalCenter: mySwitch.verticalCenter
+    }
+
+    BusyIndicator {
+        width: 42
+        height: 42
+        x: parent.width * 0.05
+        anchors.verticalCenter: mySwitch.verticalCenter
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                myDrawer.open()
+            }
+        }
+    }
+
+    /* DRAWER */
     Drawer {
         id: myDrawer
         width: parent.width * 0.8

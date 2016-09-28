@@ -12,5 +12,8 @@
         <file>shader/red.frag</file>
         <file>shader/green.frag</file>
         <file>icon/photobutton.png</file>
+        <file>icon/buttonclicked.png</file>
+        <file>icon/buttonreleased.png</file>
+        <file>icon/buttonpressed.png</file>
     </qresource>
 </RCC>

@@ -81,7 +81,7 @@ Item {
         y: parent.height - parent.height * 0.15
 
         Image {
-            id: border
+            id: imageButton
             source: "qrc:/icon/photobutton.png"
             anchors.centerIn: parent
             width: parent.height * 0.85
@@ -93,16 +93,19 @@ Item {
 
                 onPressed: {
                     console.log(qsTr("Photo Button Pressed"))
+                    imageButton.source = "qrc:/icon/buttonpressed.png"
                     camera.searchAndLock();
                 }
 
                 onClicked: {
                     console.log(qsTr("Photo Button Clicked"))
+                    imageButton.source = "qrc:/icon/photobutton.png"
                     camera.imageCapture.capture();
                 }
 
                 onReleased: {
                     console.log(qsTr("Photo Button Released"))
+                    imageButton.source = "qrc:/icon/photobutton.png"
                     camera.unlock();
                 }
             }

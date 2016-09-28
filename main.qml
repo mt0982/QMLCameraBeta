@@ -25,33 +25,7 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-    Switch {
-        id: mySwitch
-        x: parent.width * 0.75
-        y: 20
 
-        onCheckedChanged: {
-            if(mySwitch.checked) {
-                console.log("On")
-                myLabel.status = "On"
-                myCamera.flashMode = Camera.FlashOn
-            } else {
-                console.log("Off")
-                myLabel.status = "Off"
-                myCamera.flashMode = Camera.FlashOff
-            }
-        }
-    }
-
-    Label {
-        id: myLabel
-        property string status: "Off"
-        text: status
-        font.pixelSize: 18
-        color: "white"
-        anchors.left: mySwitch.right
-        anchors.verticalCenter: mySwitch.verticalCenter
-    }
 }
 
 
