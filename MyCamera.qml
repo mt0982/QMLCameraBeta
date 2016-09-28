@@ -24,7 +24,7 @@ Item {
     Camera {
         id: camera
 
-        //imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
+        imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
 
         exposure {
             exposureCompensation: -1.0
@@ -36,11 +36,12 @@ Item {
         imageCapture {
             onImageCaptured: {
                 photoPreview.source = preview
+                console.log("Image Captured: " + camera.imageCapture.capturedImagePath.toString())
             }
         }
 
         focus {
-            focusMode: Camera.FocusMacro
+            focusMode: Camera.FocusAuto //Focus Macro
             focusPointMode: Camera.FocusPointAuto
         }
     }
@@ -52,14 +53,39 @@ Item {
         focus : visible
         autoOrientation: true
         fillMode : VideoOutput.PreserveAspectCrop
+    }
+
+    ShaderEffect {
+        id: myShaderEffect
+        anchors.fill: parent
+
+        property var src: ShaderEffectSource {
+            sourceItem: myVideo
+            hideSource: false
+            recursive: false
+            live: true
+        }
+
+        vertexShader: openFile("qrc:/shader/zshader.vsh")
+        fragmentShader: fragmentShaderSource
+        onFragmentShaderChanged: {
+            console.log("Fragment Shader Was Changed")
+        }
+    }
+
+    Rectangle {
+        id: footer
+        width: parent.width
+        height: parent.height * 0.15
+        color: "#660c0c0c"
+        y: parent.height - parent.height * 0.15
 
         Image {
-            id: photoIcon
-            source: "qrc:/icon/camera.png"
-            width: 48
-            height: 48
-            x: parent.width / 2 - 24
-            y: parent.height - 58
+            id: border
+            source: "qrc:/icon/photobutton.png"
+            anchors.centerIn: parent
+            width: parent.height * 0.85
+            height: parent.height * 0.85
 
             /* Take Photo */
             MouseArea {
@@ -80,24 +106,6 @@ Item {
                     camera.unlock();
                 }
             }
-        }
-    }
-
-    ShaderEffect {
-        id: myShaderEffect
-        anchors.fill: parent
-
-        property var src: ShaderEffectSource {
-            sourceItem: myVideo
-            hideSource: false
-            recursive: false
-            live: true
-        }
-
-        vertexShader: openFile("qrc:/shader/zshader.vsh")
-        fragmentShader: fragmentShaderSource
-        onFragmentShaderChanged: {
-            console.log("Fragment Shader Was Changed")
         }
     }
 }

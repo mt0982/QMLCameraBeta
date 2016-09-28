@@ -11,5 +11,6 @@
         <file>shader/blue.frag</file>
         <file>shader/red.frag</file>
         <file>shader/green.frag</file>
+        <file>icon/photobutton.png</file>
     </qresource>
 </RCC>

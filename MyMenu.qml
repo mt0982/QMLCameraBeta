@@ -19,12 +19,12 @@ Item {
         Column {
             id: myColum
             anchors.fill: parent
-            spacing: 1
+            spacing: -7
 
             Button {
                 id: btnDisableShader
                 width: parent.width
-                height: 48
+                height: myDrawer.width * 0.2
                 text: qsTr("Disable Shader Effects")
                 onClicked: {
                     myCamera.fragmentShaderSource = openFile("qrc:/shader/normal.frag")
@@ -34,7 +34,7 @@ Item {
             Button {
                 id: btnGrayScale
                 width: parent.width
-                height: 48
+                height: myDrawer.width * 0.2
                 text: qsTr("Grayscale")
                 onClicked: {
                     myCamera.fragmentShaderSource = openFile("qrc:/shader/grayscale.frag")
@@ -44,7 +44,7 @@ Item {
             Button {
                 id: btnRedIsolation
                 width: parent.width
-                height: 48
+                height: myDrawer.width * 0.2
                 text: qsTr("Red Isolation")
                 onClicked: {
                     myCamera.fragmentShaderSource = openFile("qrc:/shader/red.frag")
@@ -54,7 +54,7 @@ Item {
             Button {
                 id: btnGreenIsolation
                 width: parent.width
-                height: 48
+                height: myDrawer.width * 0.2
                 text: qsTr("Green Isolation")
                 onClicked: {
                     myCamera.fragmentShaderSource = openFile("qrc:/shader/green.frag")
@@ -64,7 +64,7 @@ Item {
             Button {
                 id: btnBlueIsolation
                 width: parent.width
-                height: 48
+                height: myDrawer.width * 0.2
                 text: qsTr("Blue Isolation")
                 onClicked: {
                     myCamera.fragmentShaderSource = openFile("qrc:/shader/blue.frag")

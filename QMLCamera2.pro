@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += core qml quick quickwidgets multimedia
+QT += core qml quick quickwidgets multimedia widgets quickcontrols2
 CONFIG += c++11 mobility
 
 SOURCES += \
