@@ -12,8 +12,8 @@ ApplicationWindow {
     height: 640
     title: qsTr("Hello World")
 
-    //Material.theme: Material.Dark
-    //Material.accent: Material.color(Material.Teal)
+    Material.theme: Material.Dark
+    Material.accent: Material.color(Material.LightGreen)
 
     MyCamera {
         id: myCamera

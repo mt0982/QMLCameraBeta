@@ -16,5 +16,9 @@
         <file>icon/buttonreleased.png</file>
         <file>icon/buttonpressed.png</file>
         <file>MyComponent.qml</file>
+        <file>icon/lamp.png</file>
+        <file>shader/outline.frag</file>
+        <file>shader/glow.frag</file>
+        <file>shader/yellow.frag</file>
     </qresource>
 </RCC>

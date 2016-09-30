@@ -18,7 +18,6 @@ Item {
 
     Image {
         id: photoPreview
-        anchors.fill: parent
     }
 
     Camera {
@@ -28,11 +27,12 @@ Item {
 
         exposure {
             exposureCompensation: -1.0
-            exposureMode: Camera.ExposurePortrait
+            exposureMode: Camera.ExposureAuto //ExposurePortrait
         }
 
         flash.mode: flashMode
 
+        /* Edit Saved Image */
         imageCapture {
             onImageCaptured: {
                 photoPreview.source = preview
@@ -50,9 +50,9 @@ Item {
         id: myVideo
         source: camera
         anchors.fill: parent
-        focus : visible
+        focus: visible
         autoOrientation: true
-        fillMode : VideoOutput.PreserveAspectCrop
+        fillMode: VideoOutput.PreserveAspectCrop
     }
 
     ShaderEffect {
@@ -73,6 +73,7 @@ Item {
         }
     }
 
+    /* PHOTO BUTTON */
     Rectangle {
         id: footer
         width: parent.width
@@ -101,12 +102,12 @@ Item {
                     console.log(qsTr("Photo Button Clicked"))
                     imageButton.source = "qrc:/icon/photobutton.png"
                     camera.imageCapture.capture();
+                    camera.unlock();
                 }
 
                 onReleased: {
                     console.log(qsTr("Photo Button Released"))
                     imageButton.source = "qrc:/icon/photobutton.png"
-                    camera.unlock();
                 }
             }
         }

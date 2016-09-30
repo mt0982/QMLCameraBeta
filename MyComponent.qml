@@ -13,8 +13,8 @@ Item {
             Row {
                 Column {
                     width: 200
-                    Text {id: title; text: name; font.family: "Helvetica"; font.pointSize:12; font.bold: true }
-                    Text { text: 'Path: ' + path }
+                    Text { id: title; text: name; font.pointSize:18; font.bold: true }
+                    Text { text: 'Path: ' + path; font.pointSize:10; font.italic: true }
                 }
             }
 
@@ -23,9 +23,9 @@ Item {
                 onClicked: {
                     console.log(name)
                     myCamera.fragmentShaderSource = openFile(path)
+                    title.color = "black"
                 }
                 onPressed: { title.color = "#3F51B5" }
-                onReleased: { title.color = "black" }
             }
         }
     }
@@ -57,6 +57,21 @@ Item {
             name: "Blue Isolation"
             path: "qrc:/shader/blue.frag"
         }
+
+        ListElement {
+            name: "Yellow Isolation"
+            path: "qrc:/shader/yellow.frag"
+        }
+
+        ListElement {
+            name: "Outline"
+            path: "qrc:/shader/outline.frag"
+        }
+
+        ListElement {
+            name: "Glow"
+            path: "qrc:/shader/glow.frag"
+        }
     }
 
     ListView {
@@ -65,6 +80,7 @@ Item {
         model: listModel
         delegate: listDelegate
         focus: true
+        spacing: 5
     }
 }
 

@@ -31,6 +31,15 @@ Item {
         }
     }
 
+//    Image {
+//        id: flashIcon
+//        source: "qrc:/icon/lamp.png"
+//        width: 24
+//        height: myLabel.height
+//        anchors.right: mySwitch.left
+//        anchors.verticalCenter: mySwitch.verticalCenter
+//    }
+
     Label {
         id: myLabel
         property string status: "Off"
